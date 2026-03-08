@@ -2,6 +2,8 @@
 
 #include <algorithm>//utilizada para any_of
 #include <cctype> //usada para is_digit...funcion propia de libreria cctype
+#include <limits>
+#include <iostream> //por si acaso,,,verificar bien esto
 using namespace std;
 
 /*
@@ -14,6 +16,8 @@ using namespace std;
  *
  * */
 
+
+cipherModule::cipherModule(){}
 
 
 bool cipherModule::validacionTexto(const string mensaje){
@@ -50,13 +54,15 @@ int cipherModule::obtenerIndiceLetra(const string abc, const char letra){
 string cipherModule::cifradoCesar(const string mensaje, int saltos){
     /*
      * Cosas a revisar
-     * -verificar que no contenga numeros (creo que eso se hace afuera)
-     * -verificar el uso de espacios
-     * -ignorar el hecho si es mayuscula o minuscula para evaluacion
+     * -verificar que no contenga numeros (creo que eso se hace afuera)...X
+     * -verificar el uso de espacios...x
+     * -ignorar el hecho si es mayuscula o minuscula para evaluacion...x
      * */
 
     string newMessage="";
     string abc="abcdefghijklmnñopqrstuvwxyz";
+
+
     int indexChar=0;
     char letra;
     //recorremos el abecedario
@@ -64,25 +70,35 @@ string cipherModule::cifradoCesar(const string mensaje, int saltos){
         //extraigo letra
         letra = mensaje[i];
 
-        //veo su posicion dentro del alfabeto
-        int indxletra = obtenerIndiceLetra(abc, letra);
+        //manejo de letra
+        letra= tolower(letra);
+        cout<<letra<<endl;
 
-        //calculo la posicion de la nueva letra
-        int newIndex = indxletra+saltos;
-
-        //si el nuevo indice es mayor a 26, representando el tamaño del abc en español, iniciando a contar en 0, se vuelve al comiezno
-        if(newIndex>26){
-            //obtenemos la diferencia al volver al comienzo, calculando la distancia faltante
-            int dif= newIndex-26;
-
-            //restamos uno para concordar con el indice
-            char newLetra = abc[dif-1];
-            newMessage+=newLetra;
+        if(letra==' '){
+            //considerando caso de espacios
+            newMessage+=' ';
         }else{
-            char newLetra = abc[newIndex];
-            newMessage +=newLetra;
-        }
 
+            //veo su posicion dentro del alfabeto
+            int indxletra = obtenerIndiceLetra(abc, letra);
+
+            cout<<"Indice de letra: "<<indxletra<<endl;
+            //calculo la posicion de la nueva letra
+            int newIndex = indxletra+saltos;
+
+            //si el nuevo indice es mayor a 26, representando el tamaño del abc en español, iniciando a contar en 0, se vuelve al comiezno
+            if(newIndex>27){
+                //obtenemos la diferencia al volver al comienzo, calculando la distancia faltante
+                int dif= newIndex-26;
+
+                //restamos uno para concordar con el indice
+                char newLetra = abc[dif-2]; //restamos dos por aparente bug de salto
+                newMessage+=newLetra;
+            }else{
+                char newLetra = abc[newIndex];
+                newMessage = newMessage + newLetra;
+            }
+        }
     }
 
     return newMessage;

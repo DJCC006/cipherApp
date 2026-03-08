@@ -15,6 +15,7 @@ private:
 
 
 public:
+    cipherModule();
     string cifradoCesar(const string mensaje, int saltos);
     string cifradoXOR(const string mensaje);
     string cifradoVigenere(const string mensaje);
