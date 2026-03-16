@@ -1,0 +1,30 @@
+#ifndef MAINVENTANA_H
+#define MAINVENTANA_H
+
+#include <QDialog>
+#include "initialwindow.h"
+
+
+namespace Ui {
+class mainventana;
+}
+
+class mainventana : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit mainventana(QWidget *parent = nullptr);
+    ~mainventana();
+
+private slots:
+    void on_cesarBtt_clicked();
+
+    void on_logoffBtt_clicked();
+
+private:
+    Ui::mainventana *ui;
+
+};
+
+#endif // MAINVENTANA_H
