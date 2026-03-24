@@ -22,6 +22,10 @@ private slots:
 
     void on_logoffBtt_clicked();
 
+    void on_xorbtt_clicked();
+
+    void on_vigenerebtt_clicked();
+
 private:
     Ui::mainventana *ui;
 

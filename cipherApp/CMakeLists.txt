@@ -31,6 +31,13 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         initialwindow.h initialwindow.cpp initialwindow.ui
         mainventana.h mainventana.cpp mainventana.ui
         principalpanel.h principalpanel.cpp principalpanel.ui
+        frmaccion.h frmaccion.cpp frmaccion.ui
+        frmchoosedesc.h frmchoosedesc.cpp frmchoosedesc.ui
+        frmcryptxor.h frmcryptxor.cpp frmcryptxor.ui
+        frmcryptvigerne.h frmcryptvigerne.cpp frmcryptvigerne.ui
+        frmdecodecesar.h frmdecodecesar.cpp frmdecodecesar.ui
+        frmdecodexor.h frmdecodexor.cpp frmdecodexor.ui
+        frmdecodevigerne.h frmdecodevigerne.cpp frmdecodevigerne.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET cipherApp APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

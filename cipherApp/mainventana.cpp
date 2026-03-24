@@ -2,8 +2,9 @@
 #include "ui_mainventana.h"
 #include "initialwindow.h"
 #include "principalpanel.h"
-
-
+#include "frmaccion.h"
+#include "frmcryptvigerne.h"
+#include "frmcryptxor.h"
 
 mainventana::mainventana(QWidget *parent)
     : QDialog(parent)
@@ -28,7 +29,25 @@ void mainventana::on_cesarBtt_clicked()
 
 void mainventana::on_logoffBtt_clicked()
 {
-    auto w = new initialWindow();
+    auto w= new frmaccion();
+    w->setAttribute(Qt::WA_DeleteOnClose, true);
+    w->show();
+    close();
+}
+
+
+void mainventana::on_xorbtt_clicked()
+{
+    auto w = new frmcryptXOR();
+    w->setAttribute(Qt::WA_DeleteOnClose, true);
+    w->show();
+    close();
+}
+
+
+void mainventana::on_vigenerebtt_clicked()
+{
+    auto w = new frmcryptvigerne();
     w->setAttribute(Qt::WA_DeleteOnClose, true);
     w->show();
     close();

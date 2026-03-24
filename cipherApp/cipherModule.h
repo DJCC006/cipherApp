@@ -1,6 +1,16 @@
 #ifndef CIPHERMODULE_H
 #define CIPHERMODULE_H
 #include <string>
+#include <windows.h>
+#include <cctype>
+#include <limits>
+#include <ctime>
+#include <cstdlib>
+
+//cosas para XOR
+#include<bitset>
+
+
 
 using namespace std;
 
@@ -15,18 +25,33 @@ private:
 
 
 public:
+    //constructor
     cipherModule();
-    string cifradoCesar(const string mensaje, int saltos);
-   // string cifradoXOR(const string mensaje);
-    string cifradoVigenere(const string mensaje);
-    string convertirXOR(const string &msgBinario, const string &key);
 
+    //Cosas de cifrado Cesar
+    string cifradoCesar(const string &mensaje, int saltos);
     int countGroups(const string &msgBinario);
 
+    //Cosas de XOR
+    string convertirXOR(const string &msgBinario, const string &key);
     string generarKeyBinario(const string &msgBinario);
 
-    string convertirABinario(const string &mensaje);
-};
 
+    //----CONTENIDO NUEVO A NIVEL LOGICO-----
+
+    //COSAS DE VIGERNE
+    string genKeyVigerne(string const &mensaje);
+    char getRandomChar();
+    string convertirVigerne(string const &mensaje);
+    string convertirABinario(const string &mensaje);
+
+    //Metodos de descifrar
+    string descifrarCesar(const string &mensajeEncriptado, int saltos);
+    string desencriptarXOR(string const &key, string const &msgEncriptado);
+    string desencriptarVigerne(string const &key, string const &msgEncriptado);
+    string originalBinario(string const &key, string const &msgEncriptado);
+
+
+};
 
 #endif // CIPHERMODULE_H

@@ -1,6 +1,7 @@
 #include "initialwindow.h"
 #include "ui_initialwindow.h"
 #include "mainventana.h"
+#include "frmaccion.h"
 
 
 initialWindow::initialWindow(QWidget *parent)
@@ -17,7 +18,7 @@ initialWindow::~initialWindow()
 
 void initialWindow::on_signInbtt_clicked()
 {
-    auto w= new mainventana();
+    auto w= new frmaccion();
     w->setAttribute(Qt::WA_DeleteOnClose, true);
     w->show();
     close();

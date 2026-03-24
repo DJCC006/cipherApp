@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>principalPanel</class>
- <widget class="QDialog" name="principalPanel">
+ <class>frmdecodecesar</class>
+ <widget class="QDialog" name="frmdecodecesar">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -16,9 +16,9 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>20</y>
-     <width>291</width>
+     <x>320</x>
+     <y>30</y>
+     <width>421</width>
      <height>41</height>
     </rect>
    </property>
@@ -28,68 +28,30 @@
     </font>
    </property>
    <property name="text">
-    <string>Encriptación Cesar</string>
+    <string>Desencriptación Cesar</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignmentFlag::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit_2">
+  <widget class="QPushButton" name="pushButton_5">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>390</y>
-     <width>791</width>
-     <height>171</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>140</y>
-     <width>791</width>
-     <height>171</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>100</y>
-     <width>211</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Mensaje a Encriptar</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_3">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>620</y>
+     <x>420</x>
+     <y>610</y>
      <width>181</width>
      <height>71</height>
     </rect>
    </property>
    <property name="text">
-    <string>ENCRIPTAR</string>
+    <string>CARGAR</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>350</y>
+     <x>150</x>
+     <y>90</y>
      <width>211</width>
      <height>31</height>
     </rect>
@@ -103,11 +65,31 @@
     <string>Mensaje Encriptado</string>
    </property>
   </widget>
+  <widget class="QPlainTextEdit" name="plainTextEdit">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>130</y>
+     <width>791</width>
+     <height>171</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="plainTextEdit_2">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>380</y>
+     <width>791</width>
+     <height>171</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QPushButton" name="pushButton_4">
    <property name="geometry">
     <rect>
-     <x>630</x>
-     <y>620</y>
+     <x>620</x>
+     <y>610</y>
      <width>181</width>
      <height>71</height>
     </rect>
@@ -116,17 +98,35 @@
     <string>SALIR</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_5">
+  <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>430</x>
-     <y>620</y>
+     <x>150</x>
+     <y>340</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Mensaje Desencriptado</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>610</y>
      <width>181</width>
      <height>71</height>
     </rect>
    </property>
    <property name="text">
-    <string>GUARDAR</string>
+    <string>DESENCRIPTAR</string>
    </property>
   </widget>
  </widget>

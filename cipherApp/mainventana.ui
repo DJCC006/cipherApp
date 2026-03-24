@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Cerrar Sesion</string>
+    <string>REGRESAR</string>
    </property>
   </widget>
   <widget class="QPushButton" name="vigenerebtt">
