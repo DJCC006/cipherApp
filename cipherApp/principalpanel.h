@@ -21,6 +21,8 @@ private slots:
 
     void on_pushButton_3_clicked();
 
+    void on_saveBtt_clicked();
+
 private:
     Ui::principalPanel *ui;
     cipherModule* mModule;

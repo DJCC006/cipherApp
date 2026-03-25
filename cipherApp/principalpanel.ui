@@ -116,7 +116,7 @@
     <string>SALIR</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_5">
+  <widget class="QPushButton" name="saveBtt">
    <property name="geometry">
     <rect>
      <x>430</x>
