@@ -40,24 +40,33 @@ void principalPanel::on_pushButton_4_clicked()
 
 void principalPanel::on_pushButton_3_clicked()
 {
+    //valores que se consideran vacios
+    QString empty1="";
+    QString empty2=" ";
+
+
     //Estraemos el texto del box
     QString extractoTexto= ui->boxPlano->toPlainText();
 
-    string strTexto = extractoTexto.toStdString();
 
-    //obtenemos el valor de desplazamiento
-    int desplazamiento = ui->spinBox->value();
+    if(extractoTexto==empty1 || extractoTexto==empty2){
+         QMessageBox::information(this, "AVIOS", "Los campos se encuentran vacios");
+    }else{
+        string strTexto = extractoTexto.toStdString();
 
-    string codificado = mModule->cifradoCesar(strTexto, desplazamiento);
+        //obtenemos el valor de desplazamiento
+        int desplazamiento = ui->spinBox->value();
 
-    qDebug() << "Texto codificado: "<< codificado;
+        string codificado = mModule->cifradoCesar(strTexto, desplazamiento);
 
-    //preparamos para colocar en panel
-    QString qCodificado = QString::fromStdString(codificado);
+        qDebug() << "Texto codificado: "<< codificado;
 
-    //ponemos en panel de informacion
-    ui->boxEncriptado->setPlainText(qCodificado);
+        //preparamos para colocar en panel
+        QString qCodificado = QString::fromStdString(codificado);
 
+        //ponemos en panel de informacion
+        ui->boxEncriptado->setPlainText(qCodificado);
+    }
 
 }
 

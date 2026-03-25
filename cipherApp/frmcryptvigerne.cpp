@@ -37,21 +37,29 @@ void frmcryptvigerne::on_pushButton_4_clicked()
 
 void frmcryptvigerne::on_pushButton_3_clicked()
 {
+    QString empty1="";
+    QString empty2=" ";
+
+
     //Estraemos el texto del box
     QString extractoTexto= ui->boxPlano->toPlainText();
 
-    string strTexto = extractoTexto.toStdString();
+    if(extractoTexto==empty1 || extractoTexto==empty2){
+        QMessageBox::information(this, "AVISO", "Los campos se encuentran vacios");
+    }else{
+        string strTexto = extractoTexto.toStdString();
 
-    string keyVigerne= mModule->genKeyVigerne(strTexto);
+        string keyVigerne= mModule->genKeyVigerne(strTexto);
 
-    string codificado = mModule->convertirVigerne(strTexto, keyVigerne);
+        string codificado = mModule->convertirVigerne(strTexto, keyVigerne);
 
-    //preparamos para colocar en panel
-    QString qCodificado = QString::fromStdString(codificado);
-    QString qKey = QString::fromStdString(keyVigerne);
-    //ponemos en panel de informacion
-    ui->boxEncriptado->setPlainText(qCodificado);
-    ui->boxKey->setPlainText(qKey);
+        //preparamos para colocar en panel
+        QString qCodificado = QString::fromStdString(codificado);
+        QString qKey = QString::fromStdString(keyVigerne);
+        //ponemos en panel de informacion
+        ui->boxEncriptado->setPlainText(qCodificado);
+        ui->boxKey->setPlainText(qKey);
+    }
 }
 
 

@@ -22,6 +22,8 @@ private slots:
 
     void on_salirBtt_clicked();
 
+    void on_registerBtt_clicked();
+
 private:
     Ui::initialWindow *ui;
    // mainventana *primeraVentana;

@@ -6,26 +6,56 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>832</width>
-    <height>527</height>
+    <width>1058</width>
+    <height>784</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#centralwidget, QWidget#Form {
+    background-color: #000000; 
+}
+
+
+QPushButton {
+    background-color: #52057B;
+    color: #BC6FF1;            
+    border: 2px solid #892CDC; 
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #892CDC; 
+    color: #000000;            
+    border: 2px solid #BC6FF1; 
+}
+
+
+QPushButton:pressed {
+    background-color: #BC6FF1; 
+    color: #000000;
+    border: 2px solid #000000;
+    padding-left: 12px;        
+    padding-top: 12px;
+}</string>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>60</y>
-     <width>411</width>
-     <height>61</height>
+     <x>210</x>
+     <y>250</y>
+     <width>601</width>
+     <height>81</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>36</pointsize>
-     <bold>true</bold>
+     <family>VCR OSD Mono</family>
+     <pointsize>58</pointsize>
+     <bold>false</bold>
     </font>
    </property>
    <property name="text">
@@ -39,23 +69,37 @@
    <property name="geometry">
     <rect>
      <x>340</x>
-     <y>260</y>
-     <width>141</width>
-     <height>51</height>
+     <y>470</y>
+     <width>351</width>
+     <height>71</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>VCR OSD Mono</family>
+     <pointsize>16</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="text">
-    <string>Registrarse</string>
+    <string>Créditos</string>
    </property>
   </widget>
   <widget class="QPushButton" name="salirBtt">
    <property name="geometry">
     <rect>
      <x>340</x>
-     <y>360</y>
-     <width>141</width>
-     <height>51</height>
+     <y>560</y>
+     <width>351</width>
+     <height>71</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>VCR OSD Mono</family>
+     <pointsize>16</pointsize>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>Salir</string>
@@ -65,13 +109,20 @@
    <property name="geometry">
     <rect>
      <x>340</x>
-     <y>170</y>
-     <width>141</width>
-     <height>51</height>
+     <y>380</y>
+     <width>351</width>
+     <height>71</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>VCR OSD Mono</family>
+     <pointsize>16</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="text">
-    <string>Iniciar Sesion</string>
+    <string>Iniciar</string>
    </property>
   </widget>
  </widget>

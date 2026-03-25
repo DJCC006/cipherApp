@@ -38,6 +38,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         frmdecodecesar.h frmdecodecesar.cpp frmdecodecesar.ui
         frmdecodexor.h frmdecodexor.cpp frmdecodexor.ui
         frmdecodevigerne.h frmdecodevigerne.cpp frmdecodevigerne.ui
+        frmcreditos.h frmcreditos.cpp frmcreditos.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET cipherApp APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

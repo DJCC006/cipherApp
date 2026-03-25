@@ -6,21 +6,61 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>832</width>
-    <height>527</height>
+    <width>1058</width>
+    <height>784</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton {
+    background-color: #52057B;
+    color: #BC6FF1;            
+    border: 2px solid #892CDC; 
+    padding: 10px 20px;
+    font-family: VCR OSD Mono;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #892CDC; 
+    color: #000000;            
+    border: 2px solid #BC6FF1; 
+}
+
+
+QPushButton:pressed {
+    background-color: #BC6FF1; 
+    color: #000000;
+    border: 2px solid #000000;
+    padding-left: 12px;        
+    padding-top: 12px;
+}
+
+
+
+
+QWidget#centralwidget, QWidget#Form {
+    background-color: #000000; 
+}
+</string>
+  </property>
   <widget class="QPushButton" name="logoffBtt">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>340</y>
-     <width>201</width>
-     <height>61</height>
+     <x>400</x>
+     <y>520</y>
+     <width>241</width>
+     <height>81</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>VCR OSD Mono</family>
+     <pointsize>16</pointsize>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>REGRESAR</string>
@@ -29,11 +69,18 @@
   <widget class="QPushButton" name="vigenerebtt">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>210</y>
-     <width>201</width>
-     <height>61</height>
+     <x>670</x>
+     <y>370</y>
+     <width>241</width>
+     <height>81</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>VCR OSD Mono</family>
+     <pointsize>16</pointsize>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>Vigenère</string>
@@ -42,11 +89,18 @@
   <widget class="QPushButton" name="cesarBtt">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>210</y>
-     <width>201</width>
-     <height>61</height>
+     <x>130</x>
+     <y>370</y>
+     <width>241</width>
+     <height>81</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>VCR OSD Mono</family>
+     <pointsize>16</pointsize>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>César</string>
@@ -55,16 +109,17 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>-30</x>
-     <y>80</y>
-     <width>881</width>
+     <x>20</x>
+     <y>290</y>
+     <width>1011</width>
      <height>61</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>26</pointsize>
-     <bold>true</bold>
+     <family>VCR OSD Mono</family>
+     <pointsize>30</pointsize>
+     <bold>false</bold>
     </font>
    </property>
    <property name="text">
@@ -77,11 +132,18 @@
   <widget class="QPushButton" name="xorbtt">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>210</y>
-     <width>201</width>
-     <height>61</height>
+     <x>400</x>
+     <y>370</y>
+     <width>241</width>
+     <height>81</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>VCR OSD Mono</family>
+     <pointsize>16</pointsize>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>XOR</string>

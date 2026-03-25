@@ -13,18 +13,53 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton {
+    background-color: #52057B;
+    color: #BC6FF1;            
+    border: 2px solid #892CDC; 
+    padding: 10px 20px;
+    font-family: VCR OSD Mono;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+QPushButton:hover {
+    background-color: #892CDC; 
+    color: #000000;            
+    border: 2px solid #BC6FF1; 
+}
+
+
+QPushButton:pressed {
+    background-color: #BC6FF1; 
+    color: #000000;
+    border: 2px solid #000000;
+    padding-left: 12px;        
+    padding-top: 12px;
+}
+
+
+
+
+QWidget#centralwidget, QWidget#Form {
+    background-color: #000000; 
+}
+</string>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>30</y>
-     <width>421</width>
+     <x>230</x>
+     <y>50</y>
+     <width>601</width>
      <height>41</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>20</pointsize>
+     <family>VCR OSD Mono</family>
+     <pointsize>25</pointsize>
     </font>
    </property>
    <property name="text">
@@ -38,7 +73,7 @@
    <property name="geometry">
     <rect>
      <x>420</x>
-     <y>610</y>
+     <y>620</y>
      <width>181</width>
      <height>71</height>
     </rect>
@@ -51,7 +86,7 @@
    <property name="geometry">
     <rect>
      <x>620</x>
-     <y>610</y>
+     <y>620</y>
      <width>181</width>
      <height>71</height>
     </rect>
@@ -64,7 +99,7 @@
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>610</y>
+     <y>620</y>
      <width>181</width>
      <height>71</height>
     </rect>
@@ -77,13 +112,14 @@
    <property name="geometry">
     <rect>
      <x>140</x>
-     <y>120</y>
-     <width>211</width>
+     <y>130</y>
+     <width>341</width>
      <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
+     <family>VCR OSD Mono</family>
      <pointsize>12</pointsize>
     </font>
    </property>
@@ -95,7 +131,7 @@
    <property name="geometry">
     <rect>
      <x>140</x>
-     <y>160</y>
+     <y>170</y>
      <width>791</width>
      <height>131</height>
     </rect>
@@ -105,7 +141,7 @@
    <property name="geometry">
     <rect>
      <x>140</x>
-     <y>440</y>
+     <y>450</y>
      <width>791</width>
      <height>121</height>
     </rect>
@@ -115,13 +151,14 @@
    <property name="geometry">
     <rect>
      <x>140</x>
-     <y>320</y>
-     <width>251</width>
+     <y>340</y>
+     <width>401</width>
      <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
+     <family>VCR OSD Mono</family>
      <pointsize>12</pointsize>
     </font>
    </property>
@@ -132,8 +169,8 @@
   <widget class="QSpinBox" name="spinBox">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>320</y>
+     <x>450</x>
+     <y>340</y>
      <width>91</width>
      <height>41</height>
     </rect>
@@ -143,13 +180,14 @@
    <property name="geometry">
     <rect>
      <x>140</x>
-     <y>400</y>
-     <width>211</width>
+     <y>410</y>
+     <width>501</width>
      <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
+     <family>VCR OSD Mono</family>
      <pointsize>12</pointsize>
     </font>
    </property>

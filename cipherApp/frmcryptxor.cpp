@@ -36,22 +36,33 @@ void frmcryptXOR::on_pushButton_4_clicked()
 
 void frmcryptXOR::on_pushButton_3_clicked()
 {
+
+    //valores que se consideran vacios
+    QString empty1="";
+    QString empty2=" ";
+
+
     //Estraemos el texto del box
     QString extractoTexto= ui->boxPlano->toPlainText();
 
-    string strTexto = extractoTexto.toStdString();
+    if(extractoTexto==empty1 || extractoTexto==empty2){
+        QMessageBox::information(this, "AVISO", "Los campos se encuentran vacios");
+    }else{
+        string strTexto = extractoTexto.toStdString();
 
-    string txtBinario = mModule->convertirABinario(strTexto);
-    string keyXOR= mModule->generarKeyBinario(txtBinario);
+        string txtBinario = mModule->convertirABinario(strTexto);
+        string keyXOR= mModule->generarKeyBinario(txtBinario);
 
-    string codificado = mModule->convertirXOR(txtBinario, keyXOR);
+        string codificado = mModule->convertirXOR(txtBinario, keyXOR);
 
-    //preparamos para colocar en panel
-    QString qCodificado = QString::fromStdString(codificado);
-    QString qKey = QString::fromStdString(keyXOR);
-    //ponemos en panel de informacion
-    ui->boxEncriptado->setPlainText(qCodificado);
-    ui->boxKey->setPlainText(qKey);
+        //preparamos para colocar en panel
+        QString qCodificado = QString::fromStdString(codificado);
+        QString qKey = QString::fromStdString(keyXOR);
+        //ponemos en panel de informacion
+        ui->boxEncriptado->setPlainText(qCodificado);
+        ui->boxKey->setPlainText(qKey);
+    }
+
 }
 
 
