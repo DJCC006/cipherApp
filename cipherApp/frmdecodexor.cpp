@@ -3,11 +3,13 @@
 #include "frmchoosedesc.h"
 
 
-frmdecodexor::frmdecodexor(QWidget *parent)
+frmdecodexor::frmdecodexor(cipherModule* module, QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::frmdecodexor)
+    , ui(new Ui::frmdecodexor), mModule(module)
 {
     ui->setupUi(this);
+    ui->boxEncriptado->setEnabled(false);
+    ui->boxKey->setEnabled(false);
 }
 
 frmdecodexor::~frmdecodexor()
@@ -17,7 +19,7 @@ frmdecodexor::~frmdecodexor()
 
 void frmdecodexor::on_pushButton_4_clicked()
 {
-    auto w = new frmChooseDesc();
+    auto w = new frmChooseDesc(mModule);
     w->setAttribute(Qt::WA_DeleteOnClose, true);
     w->show();
     close();

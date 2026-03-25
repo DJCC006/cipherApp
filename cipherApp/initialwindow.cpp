@@ -4,9 +4,9 @@
 #include "frmaccion.h"
 
 
-initialWindow::initialWindow(QWidget *parent)
+initialWindow::initialWindow(cipherModule* module, QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::initialWindow)
+    , ui(new Ui::initialWindow), mModule(module)
 {
     ui->setupUi(this);
 }
@@ -18,7 +18,7 @@ initialWindow::~initialWindow()
 
 void initialWindow::on_signInbtt_clicked()
 {
-    auto w= new frmaccion();
+    auto w= new frmaccion(mModule);
     w->setAttribute(Qt::WA_DeleteOnClose, true);
     w->show();
     close();
@@ -27,6 +27,8 @@ void initialWindow::on_signInbtt_clicked()
 
 void initialWindow::on_salirBtt_clicked()
 {
+    delete mModule;
+    mModule=nullptr;
     close();
 }
 

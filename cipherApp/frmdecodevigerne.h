@@ -2,7 +2,7 @@
 #define FRMDECODEVIGERNE_H
 
 #include <QDialog>
-
+#include "cipherModule.h"
 namespace Ui {
 class frmdecodevigerne;
 }
@@ -12,7 +12,7 @@ class frmdecodevigerne : public QDialog
     Q_OBJECT
 
 public:
-    explicit frmdecodevigerne(QWidget *parent = nullptr);
+    explicit frmdecodevigerne(cipherModule* module, QWidget *parent = nullptr);
     ~frmdecodevigerne();
 
 private slots:
@@ -20,6 +20,7 @@ private slots:
 
 private:
     Ui::frmdecodevigerne *ui;
+    cipherModule* mModule;
 };
 
 #endif // FRMDECODEVIGERNE_H

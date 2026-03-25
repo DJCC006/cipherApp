@@ -2,6 +2,7 @@
 #define FRMDECODEXOR_H
 
 #include <QDialog>
+#include "cipherModule.h"
 
 namespace Ui {
 class frmdecodexor;
@@ -12,7 +13,7 @@ class frmdecodexor : public QDialog
     Q_OBJECT
 
 public:
-    explicit frmdecodexor(QWidget *parent = nullptr);
+    explicit frmdecodexor(cipherModule* module, QWidget *parent = nullptr);
     ~frmdecodexor();
 
 private slots:
@@ -20,6 +21,7 @@ private slots:
 
 private:
     Ui::frmdecodexor *ui;
+    cipherModule* mModule;
 };
 
 #endif // FRMDECODEXOR_H

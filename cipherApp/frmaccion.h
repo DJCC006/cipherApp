@@ -2,7 +2,7 @@
 #define FRMACCION_H
 
 #include <QDialog>
-
+#include "cipherModule.h"
 namespace Ui {
 class frmaccion;
 }
@@ -12,7 +12,7 @@ class frmaccion : public QDialog
     Q_OBJECT
 
 public:
-    explicit frmaccion(QWidget *parent = nullptr);
+    explicit frmaccion(cipherModule* module, QWidget *parent = nullptr);
     ~frmaccion();
 
 private slots:
@@ -24,6 +24,7 @@ private slots:
 
 private:
     Ui::frmaccion *ui;
+    cipherModule* mModule;
 };
 
 #endif // FRMACCION_H

@@ -65,7 +65,7 @@
     <string>Mensaje a Encriptar</string>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit">
+  <widget class="QPlainTextEdit" name="boxPlano">
    <property name="geometry">
     <rect>
      <x>160</x>
@@ -75,7 +75,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit_2">
+  <widget class="QPlainTextEdit" name="boxEncriptado">
    <property name="geometry">
     <rect>
      <x>160</x>
@@ -147,7 +147,7 @@
     <string>KEY de Decodificacion</string>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit_3">
+  <widget class="QPlainTextEdit" name="boxKey">
    <property name="geometry">
     <rect>
      <x>160</x>

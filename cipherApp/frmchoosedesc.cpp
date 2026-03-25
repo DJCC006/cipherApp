@@ -6,9 +6,9 @@
 #include "frmdecodexor.h"
 
 
-frmChooseDesc::frmChooseDesc(QWidget *parent)
+frmChooseDesc::frmChooseDesc(cipherModule* module, QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::frmChooseDesc)
+    , ui(new Ui::frmChooseDesc), mModule(module)
 {
     ui->setupUi(this);
 }
@@ -20,7 +20,7 @@ frmChooseDesc::~frmChooseDesc()
 
 void frmChooseDesc::on_logoffBtt_clicked()
 {
-    auto w= new frmaccion();
+    auto w= new frmaccion(mModule);
     w->setAttribute(Qt::WA_DeleteOnClose, true);
     w->show();
     close();
@@ -29,7 +29,7 @@ void frmChooseDesc::on_logoffBtt_clicked()
 
 void frmChooseDesc::on_xorbtt_clicked()
 {
-    auto w= new frmdecodexor();
+    auto w= new frmdecodexor(mModule);
     w->setAttribute(Qt::WA_DeleteOnClose, true);
     w->show();
     close();
@@ -38,7 +38,7 @@ void frmChooseDesc::on_xorbtt_clicked()
 
 void frmChooseDesc::on_vigenerebtt_clicked()
 {
-    auto w= new frmdecodevigerne();
+    auto w= new frmdecodevigerne(mModule);
     w->setAttribute(Qt::WA_DeleteOnClose, true);
     w->show();
     close();
@@ -47,7 +47,7 @@ void frmChooseDesc::on_vigenerebtt_clicked()
 
 void frmChooseDesc::on_cesarBtt_clicked()
 {
-    auto w= new frmdecodecesar();
+    auto w= new frmdecodecesar(mModule);
     w->setAttribute(Qt::WA_DeleteOnClose, true);
     w->show();
     close();

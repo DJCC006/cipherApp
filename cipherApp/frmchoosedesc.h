@@ -2,7 +2,7 @@
 #define FRMCHOOSEDESC_H
 
 #include <QDialog>
-
+#include "cipherModule.h"
 namespace Ui {
 class frmChooseDesc;
 }
@@ -12,7 +12,7 @@ class frmChooseDesc : public QDialog
     Q_OBJECT
 
 public:
-    explicit frmChooseDesc(QWidget *parent = nullptr);
+    explicit frmChooseDesc(cipherModule* module, QWidget *parent = nullptr);
     ~frmChooseDesc();
 
 private slots:
@@ -26,6 +26,7 @@ private slots:
 
 private:
     Ui::frmChooseDesc *ui;
+    cipherModule* mModule;
 };
 
 #endif // FRMCHOOSEDESC_H

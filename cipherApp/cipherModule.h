@@ -11,6 +11,9 @@
 #include<bitset>
 
 
+//cosas para poder manejar letras
+#include <cwctype> //to towlower
+
 
 using namespace std;
 
@@ -21,7 +24,7 @@ private:
     //metodos que ayudaran a las demas cosas
     bool validacionTexto(const string mensaje);
     int  obtenerIndiceLetra(const string abc, const char letra);
-    string convertirABinario(string &mensaje);
+
 
 
 public:
@@ -35,14 +38,14 @@ public:
     //Cosas de XOR
     string convertirXOR(const string &msgBinario, const string &key);
     string generarKeyBinario(const string &msgBinario);
-
+    string convertirABinario(string &mensaje);
 
     //----CONTENIDO NUEVO A NIVEL LOGICO-----
 
     //COSAS DE VIGERNE
     string genKeyVigerne(string const &mensaje);
     char getRandomChar();
-    string convertirVigerne(string const &mensaje);
+    string convertirVigerne(string const &mensaje, const string &keyVigerne);
     string convertirABinario(const string &mensaje);
 
     //Metodos de descifrar

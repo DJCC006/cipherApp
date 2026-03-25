@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPlainTextEdit" name="plainTextEdit_2">
+  <widget class="QPlainTextEdit" name="boxEncriptado">
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -72,7 +72,7 @@
     <string>Mensaje Desencriptado</string>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit">
+  <widget class="QPlainTextEdit" name="boxPlano">
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -126,7 +126,7 @@
     <string>CARGAR</string>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit_3">
+  <widget class="QPlainTextEdit" name="boxKey">
    <property name="geometry">
     <rect>
      <x>150</x>

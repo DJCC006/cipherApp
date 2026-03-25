@@ -3,7 +3,7 @@
 
 #include <QDialog>
 //#include "mainventana.h"
-
+#include "cipherModule.h"
 
 namespace Ui {
 class initialWindow;
@@ -14,7 +14,7 @@ class initialWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit initialWindow(QWidget *parent = nullptr);
+    explicit initialWindow(cipherModule* module, QWidget *parent = nullptr);
     ~initialWindow();
 
 private slots:
@@ -25,6 +25,7 @@ private slots:
 private:
     Ui::initialWindow *ui;
    // mainventana *primeraVentana;
+    cipherModule* mModule;
 
 };
 

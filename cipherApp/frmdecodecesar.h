@@ -2,7 +2,7 @@
 #define FRMDECODECESAR_H
 
 #include <QDialog>
-
+#include "cipherModule.h"
 namespace Ui {
 class frmdecodecesar;
 }
@@ -12,7 +12,7 @@ class frmdecodecesar : public QDialog
     Q_OBJECT
 
 public:
-    explicit frmdecodecesar(QWidget *parent = nullptr);
+    explicit frmdecodecesar(cipherModule* module, QWidget *parent = nullptr);
     ~frmdecodecesar();
 
 private slots:
@@ -20,6 +20,7 @@ private slots:
 
 private:
     Ui::frmdecodecesar *ui;
+    cipherModule* mModule;
 };
 
 #endif // FRMDECODECESAR_H

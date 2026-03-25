@@ -34,23 +34,23 @@
     <set>Qt::AlignmentFlag::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit_2">
+  <widget class="QPlainTextEdit" name="boxEncriptado">
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>390</y>
+     <y>420</y>
      <width>791</width>
-     <height>171</height>
+     <height>121</height>
     </rect>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit">
+  <widget class="QPlainTextEdit" name="boxPlano">
    <property name="geometry">
     <rect>
      <x>160</x>
      <y>140</y>
      <width>791</width>
-     <height>171</height>
+     <height>131</height>
     </rect>
    </property>
   </widget>
@@ -89,7 +89,7 @@
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>350</y>
+     <y>380</y>
      <width>211</width>
      <height>31</height>
     </rect>
@@ -127,6 +127,34 @@
    </property>
    <property name="text">
     <string>GUARDAR</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>300</y>
+     <width>251</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Numero de Desplazamiento</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="spinBox">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>300</y>
+     <width>91</width>
+     <height>41</height>
+    </rect>
    </property>
   </widget>
  </widget>

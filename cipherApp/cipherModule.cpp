@@ -3,7 +3,10 @@
 #include <algorithm>//utilizada para any_of
 #include <cctype> //usada para is_digit...funcion propia de libreria cctype
 #include <limits>
-#include <iostream> //por si acaso,,,verificar bien esto
+
+//cosas para que funcione la ñ
+#include <iostream>
+#include <cwctype> //to towlower
 
 #include <cctype>
 #include <limits>
@@ -15,6 +18,9 @@
 
 
 
+//librerias para otras
+#include <locale>
+#include <codecvt>
 
 
 
@@ -22,18 +28,16 @@
 
 using namespace std;
 
-/*
- * IDEA DE DESARROLLO
- *
- * FUNCIONES AUXILIARES SE REALIZAN CON FUNCIONES MAS OPTIMIZABLES
- * FUNCIONES PRINCIPALES A PURA ARTILLERIA
- *
- *
- *
- * */
-
 
 cipherModule::cipherModule(){}
+
+
+string wstring_to_utf8(const wstring& str){
+    wstring_convert<codecvt_utf8<wchar_t>> converter;
+    return converter.to_bytes(str);
+}
+
+
 
 
 bool cipherModule::validacionTexto(const string mensaje){
@@ -66,40 +70,102 @@ int cipherModule::obtenerIndiceLetra(const string abc, const char letra){
     return -1;
 }
 
+string cipherModule::cifradoCesar(const string &mensaje, int saltos){
+    wstring_convert<codecvt_utf8<wchar_t>> converter;
+    wstring wMensaje = converter.from_bytes(mensaje);
 
+
+    wstring newMessage=L"";
+    wstring abc=L"abcdefghijklmnñopqrstuvwxyz";
+    int sizeABC= abc.length();//esto para controlar las salidas de la enie
+
+
+
+
+    for(int i=0; i<mensaje.length(); i++){
+        wchar_t letra = towlower(mensaje[i]);
+
+        //letra= tolower(letra);
+
+
+        if(letra==L' '){
+            newMessage+=L' ';
+        }else{
+            size_t indxLetra = abc.find(letra);
+
+            if(indxLetra!= wstring::npos){
+                int newIndex = (indxLetra+saltos) %sizeABC;
+                if(newIndex<0){
+                    newIndex+=sizeABC;
+                }
+                newMessage+= abc[newIndex];
+            }else{
+                newMessage+= wMensaje[i];
+            }
+
+            //int indxletra = obtenerIndiceLetra(abc, letra);
+
+            //manejamos en caso de devolver un indice desconocido
+            // if(indxletra!=-1){
+            //     int newIndex = (indxletra+saltos)%sizeABC;
+
+            //     if(newIndex<0){
+            //         newIndex+=sizeABC;
+            //     }
+            //     //ahoro de lineas de codigo con la ayuda de modular
+            //     newMessage += abc[newIndex];
+            // }else{
+            //     //en caso de ser una letra que no se encuentra conocida, simplemente se adjunta
+            //     newMessage+=letra;
+            // }
+        }
+    }
+
+    return converter.to_bytes(newMessage);
+}
+
+
+
+
+
+
+/*
 string cipherModule::cifradoCesar(const string &mensaje, int saltos){
     string newMessage="";
     string abc="abcdefghijklmnñopqrstuvwxyz";
+    int sizeABC= abc.length();//esto para controlar las salidas de la enie
 
     char letra;
     for(int i=0; i<mensaje.length(); i++){
         letra = mensaje[i];
 
         letra= tolower(letra);
-        cout<<letra<<endl;
+
 
         if(letra==' '){
             newMessage+=' ';
         }else{
             int indxletra = obtenerIndiceLetra(abc, letra);
 
-            cout<<"Indice de letra: "<<indxletra<<endl;
-            int newIndex = indxletra+saltos;
+            //manejamos en caso de devolver un indice desconocido
+            if(indxletra!=-1){
+                int newIndex = (indxletra+saltos)%sizeABC;
 
-
-            if(newIndex>27){
-                int dif= newIndex-26;
-                char newLetra = abc[dif-2];
-                newMessage+=newLetra;
+                if(newIndex<0){
+                    newIndex+=sizeABC;
+                }
+                //ahoro de lineas de codigo con la ayuda de modular
+                newMessage += abc[newIndex];
             }else{
-                char newLetra = abc[newIndex];
-                newMessage = newMessage + newLetra;
+                //en caso de ser una letra que no se encuentra conocida, simplemente se adjunta
+                newMessage+=letra;
             }
         }
     }
+
     return newMessage;
 }
-
+*/
 
 
 string cipherModule::convertirXOR(const string &msgBinario, const string &key){
@@ -166,7 +232,7 @@ string cipherModule::generarKeyBinario(const string &msgBinario){
     return keyBinaria;
 }
 
-string cipherModule::convertirABinario(const string &mensaje){
+string cipherModule::convertirABinario (string &mensaje){
     string binaryMessage="";
     for(char c: mensaje){
         bitset<8> binary(c);
@@ -217,12 +283,10 @@ string cipherModule::genKeyVigerne(string const &mensaje){
 
 
 
-string cipherModule::convertirVigerne(string const &mensaje){
+string cipherModule::convertirVigerne(string const &mensaje, const string &keyVigerne){
     //generacion de key
     string mensajeCifrado ="";
     string abc= "abcdefghijklmnñopqrstuvwxyz";
-    string keyVigerne = genKeyVigerne(mensaje);
-
 
     cout<<"Key para mensaje ingresado: \n";
     cout<<keyVigerne<<endl;
