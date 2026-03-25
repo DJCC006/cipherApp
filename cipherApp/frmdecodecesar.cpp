@@ -78,3 +78,37 @@ void frmdecodecesar::on_pushButton_5_clicked()
     }
 }
 
+
+void frmdecodecesar::on_pushButton_3_clicked()
+{
+
+
+
+    //valores que se consideran vacios
+    QString empty1="";
+    QString empty2=" ";
+
+    QString extractoTexto= ui->boxPlano->toPlainText();
+
+    if(extractoTexto==empty1 || extractoTexto==empty2){
+        QMessageBox::information(this, "AVISO", "Los campos se encuentran vacios");
+    }else{
+
+        string strTexto = extractoTexto.toStdString();
+
+        //obtenemos el valor de desplazamiento
+        int desplazamiento = ui->spinBox->value();
+
+        string descodificado = mModule->descifrarCesar(strTexto, desplazamiento);
+
+        //preparamos para colocar en panel
+        QString qCodificado = QString::fromStdString(descodificado);
+
+        ui->boxEncriptado->setPlainText(qCodificado);
+
+    }
+
+
+
+}
+

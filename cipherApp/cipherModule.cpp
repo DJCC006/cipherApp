@@ -24,8 +24,6 @@
 
 
 
-
-
 using namespace std;
 
 
@@ -123,49 +121,6 @@ string cipherModule::cifradoCesar(const string &mensaje, int saltos){
 
     return converter.to_bytes(newMessage);
 }
-
-
-
-
-
-
-/*
-string cipherModule::cifradoCesar(const string &mensaje, int saltos){
-    string newMessage="";
-    string abc="abcdefghijklmnñopqrstuvwxyz";
-    int sizeABC= abc.length();//esto para controlar las salidas de la enie
-
-    char letra;
-    for(int i=0; i<mensaje.length(); i++){
-        letra = mensaje[i];
-
-        letra= tolower(letra);
-
-
-        if(letra==' '){
-            newMessage+=' ';
-        }else{
-            int indxletra = obtenerIndiceLetra(abc, letra);
-
-            //manejamos en caso de devolver un indice desconocido
-            if(indxletra!=-1){
-                int newIndex = (indxletra+saltos)%sizeABC;
-
-                if(newIndex<0){
-                    newIndex+=sizeABC;
-                }
-                //ahoro de lineas de codigo con la ayuda de modular
-                newMessage += abc[newIndex];
-            }else{
-                //en caso de ser una letra que no se encuentra conocida, simplemente se adjunta
-                newMessage+=letra;
-            }
-        }
-    }
-
-    return newMessage;
-}
-*/
 
 
 string cipherModule::convertirXOR(const string &msgBinario, const string &key){
@@ -284,6 +239,53 @@ string cipherModule::genKeyVigerne(string const &mensaje){
 
 
 string cipherModule::convertirVigerne(string const &mensaje, const string &keyVigerne){
+    //convertir cosas a wstring para que me soporte la ñ
+
+    std::wstring_convert<codecvt_utf8<wchar_t>> converter;
+
+    wstring wMensaje = converter.from_bytes(mensaje);
+    wstring wKey = converter.from_bytes(keyVigerne);
+    wstring wMensajeCifrado = L"";
+
+
+
+    //string mensajeCifrado ="";
+    wstring abc= L"abcdefghijklmnñopqrstuvwxyz";
+    int sizeABC= abc.length();
+
+    for(int i=0; i< wMensaje.length(); i++){
+        wchar_t charOriginal = towlower(wMensaje[i]);
+
+
+        if(charOriginal == L' '){
+            wMensajeCifrado+= L' ';
+        }else{
+
+            int indxCharOriginal = abc.find(charOriginal);
+
+            wchar_t charKey= towlower(wKey[i%wKey.length()]);
+            int indxCharKey = abc.find(charKey);
+
+
+            if(indxCharOriginal != wstring::npos && indxCharKey != wstring::npos){
+                int newIndx = (indxCharOriginal + indxCharKey)%27;
+
+                wMensajeCifrado+= abc[newIndx];
+            }else{
+                wMensajeCifrado+= wMensaje[i];
+            }
+
+
+        }
+    }
+
+    return converter.to_bytes(wMensajeCifrado);
+}
+
+
+
+/*
+string cipherModule::convertirVigerne(string const &mensaje, const string &keyVigerne){
     //generacion de key
     string mensajeCifrado ="";
     string abc= "abcdefghijklmnñopqrstuvwxyz";
@@ -326,8 +328,48 @@ string cipherModule::convertirVigerne(string const &mensaje, const string &keyVi
 
     return mensajeCifrado;
 }
+*/
 
 
+string cipherModule::descifrarCesar(const string &mensajeEncriptado, int saltos){
+
+    std::wstring_convert<codecvt_utf8<wchar_t>> converter;
+
+    wstring wMensaje = converter.from_bytes(mensajeEncriptado);
+    wstring wNewMessage = L"";
+
+    wstring abc= L"abcdefghijklmnñopqrstuvwxyz";
+    int sizeABC= abc.length();
+
+    for(int i=0; i< wMensaje.length(); i++){
+        wchar_t letra = towlower(wMensaje[i]);
+
+        if(letra == L' '){
+            wNewMessage+=L' ';
+        }else{
+            size_t indxLetra = abc.find(letra);
+
+            if(indxLetra!= wstring::npos){
+                int newIndx = (static_cast<int>(indxLetra)-saltos)% sizeABC;
+
+                if(newIndx<0){
+                    newIndx += sizeABC;
+                }
+
+
+                wNewMessage+= abc[newIndx];
+            }else{
+                wNewMessage+= wMensaje[i];
+            }
+        }
+    }
+
+    return converter.to_bytes(wNewMessage);
+
+}
+
+
+/*
 string cipherModule::descifrarCesar(const string &mensajeEncriptado, int saltos){
 
     string newMessage="";
@@ -375,6 +417,7 @@ string cipherModule::descifrarCesar(const string &mensajeEncriptado, int saltos)
     return newMessage;
 
 }
+*/
 
 
 
@@ -400,6 +443,57 @@ string cipherModule::desencriptarXOR(string const &key, string const &msgEncript
 
 }
 
+
+string cipherModule::desencriptarVigerne(string const &key, string const &msgEncriptado){
+    wstring_convert<codecvt_utf8<wchar_t>> converter;
+
+    wstring wMsgEncriptado = converter.from_bytes(msgEncriptado);
+    wstring wKey = converter.from_bytes(key);
+    wstring wOriginalMsg = L"";
+
+    wstring abc = L"abcdefghijklmnñopqrstuvwxyz";
+    int sizeABC = abc.length();
+
+
+
+    for(int i=0; i<wMsgEncriptado.length(); i++){
+        wchar_t letraMsg= towlower(wMsgEncriptado[i]);
+
+        if(letraMsg== L' '){
+            wOriginalMsg+= L' ';
+        }else{
+            int indxActual = abc.find(letraMsg);
+
+            wchar_t letraKey = towlower(wKey[i % wKey.length()]);
+            int indxKey = abc.find(letraKey);
+
+            if(indxActual != wstring::npos && indxKey !=wstring::npos){
+                int indxOriginal = (indxActual - indxKey) % sizeABC;
+
+                if(indxOriginal<0){
+                    indxOriginal+=sizeABC;
+                }
+
+
+                wOriginalMsg+= abc[indxOriginal];
+
+
+            }else{
+                wOriginalMsg+= wMsgEncriptado[i];
+            }
+        }
+    }
+
+
+    return converter.to_bytes(wOriginalMsg);
+
+
+}
+
+
+
+
+/*
 string cipherModule::desencriptarVigerne(string const &key, string const &msgEncriptado){
     string originalmsg="";
     string abc = "abcdefghijklmnñopqrstuvwxyz";
@@ -435,6 +529,7 @@ string cipherModule::desencriptarVigerne(string const &key, string const &msgEnc
     return originalmsg;
 
 }
+*/
 
 
 string cipherModule::originalBinario(string const &key, string const &msgEncriptado){

@@ -76,3 +76,33 @@ void frmdecodexor::on_pushButton_5_clicked()
     }
 }
 
+
+void frmdecodexor::on_pushButton_3_clicked()
+{
+    //valores que se consideran vacios
+    QString empty1="";
+    QString empty2=" ";
+
+    QString extractoTexto= ui->boxPlano->toPlainText();
+
+    if(extractoTexto==empty1 || extractoTexto==empty2){
+        QMessageBox::information(this, "AVISO", "Los campos se encuentran vacios");
+    }else{
+        string strTexto = extractoTexto.toStdString();
+
+        QString extractoKey = ui->boxKey->toPlainText();
+
+        if(extractoKey==empty1 || extractoKey==empty2){
+            QMessageBox::information(this, "AVISO", "Porfavor introduzca la KEY DECODIFICADORA");
+        }else{
+            string strKey = extractoKey.toStdString();
+            string descodificado = mModule->desencriptarXOR(strKey, strTexto);
+
+            //preparamos para colocar en panel
+            QString qCodificado = QString::fromStdString(descodificado);
+
+            ui->boxEncriptado->setPlainText(qCodificado);
+        }
+    }
+}
+

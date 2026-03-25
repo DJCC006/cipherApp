@@ -17,7 +17,7 @@ frmcryptvigerne::frmcryptvigerne(cipherModule* module, QWidget *parent)
 {
     ui->setupUi(this);
     ui->boxEncriptado->setEnabled(false);
-    ui->boxKey->setEnabled(false);
+    //ui->boxKey->setEnabled(false);
 }
 
 frmcryptvigerne::~frmcryptvigerne()
